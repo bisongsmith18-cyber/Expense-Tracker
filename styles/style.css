@@ -1,0 +1,226 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: all 0.25s ease-in-out;
+}
+
+body {
+  background: linear-gradient(135deg, #0f0f0f, #1a1a2e);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 380px;
+  padding: 20px;
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+h3 {
+  font-size: 1rem;
+  text-align: center;
+}
+
+#theme-toggle {
+  align-self: flex-end;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.balance {
+  text-align: center;
+}
+
+.summary {
+  display: flex;
+  gap: 8px;
+}
+
+.summary div {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.income {
+  border: 1px solid rgba(0, 255, 100, 0.4);
+  box-shadow: 0 0 10px rgba(0, 255, 100, 0.2);
+}
+
+.income:hover {
+  box-shadow: 0 0 20px rgba(0, 255, 100, 0.6);
+}
+
+.expense {
+  border: 1px solid rgba(255, 0, 80, 0.4);
+  box-shadow: 0 0 10px rgba(255, 0, 80, 0.2);
+}
+
+.expense:hover {
+  box-shadow: 0 0 20px rgba(255, 0, 80, 0.6);
+}
+
+canvas {
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  border-right: 4px solid;
+}
+
+li.plus {
+  border-color: #4caf50;
+}
+
+li.minus {
+  border-color: #f44336;
+}
+
+li small {
+  font-size: 11px;
+  color: #aaa;
+}
+
+button.delete-btn {
+  align-self: flex-end;
+  background: rgba(255, 0, 80, 0.2);
+  border: none;
+  color: white;
+  padding: 3px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.filters {
+  display: flex;
+  gap: 6px;
+}
+
+.filters button {
+  flex: 1;
+  padding: 6px;
+  font-size: 13px;
+
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.filters button:hover {
+  background: rgba(98, 0, 234, 0.5);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+form input {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+form button {
+  padding: 10px;
+  border-radius: 6px;
+
+  background: linear-gradient(90deg, #6200ea, #9c27b0);
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+form button:hover {
+  opacity: 0.9;
+}
+
+body.light {
+  background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+  color: #111;
+}
+
+body.light .container {
+  background: rgba(255, 255, 255, 0.6);
+  color: #111;
+}
+
+body.light input {
+  background: rgba(0, 0, 0, 0.05);
+  color: #111;
+}
+
+body.light .filters button {
+  background: rgba(0, 0, 0, 0.05);
+  color: #111;
+}
+
+body.light li {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+body.light #theme-toggle {
+  background: rgba(0, 0, 0, 0.1);
+  color: black;
+}
+
+@media (max-width: 480px) {
+  .summary {
+    flex-direction: column;
+  }
+}
