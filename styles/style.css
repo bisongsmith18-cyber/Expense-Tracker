@@ -122,16 +122,6 @@ li small {
   color: #aaa;
 }
 
-button.delete-btn {
-  align-self: flex-end;
-  background: rgb(255 0 80 / 20%);
-  border: none;
-  color: white;
-  padding: 3px 6px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
 /* FORM (placed BEFORE filters to fix lint error) */
 form {
   display: flex;
@@ -173,12 +163,22 @@ form button {
   cursor: pointer;
 }
 
+form button:hover {
+  opacity: 0.9;
+}
+
 .filters button:hover {
   background: rgb(98 0 234 / 50%);
 }
 
-form button:hover {
-  opacity: 0.9;
+button.delete-btn {
+  align-self: flex-end;
+  background: rgb(255 0 80 / 20%);
+  border: none;
+  color: white;
+  padding: 3px 6px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 /* LIGHT MODE */
