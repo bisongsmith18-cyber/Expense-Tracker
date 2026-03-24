@@ -48,7 +48,7 @@ function addTransaction (e) {
   date.value = ''
 }
 
-function removeTransaction (id) {
+window.removeTransaction = function (id) {
   transactions = transactions.filter(t => t.id !== id)
   updateLocalStorage()
   init()
@@ -88,7 +88,9 @@ function updateChart (inc, exp) {
   if (chart) chart.destroy()
 
   const ctx = document.getElementById('chart')
-  chart = new Chart(ctx, {
+  if (!window.Chart) return
+
+  chart = new window.Chart(ctx, {
     type: 'pie',
     data: {
       labels: ['Income', 'Expenses'],
@@ -100,7 +102,7 @@ function updateChart (inc, exp) {
   })
 }
 
-function filterTransactions (type) {
+window.filterTransactions = function (type) {
   list.innerHTML = ''
 
   let filtered = transactions

@@ -132,26 +132,7 @@ button.delete-btn {
   cursor: pointer;
 }
 
-.filters {
-  display: flex;
-  gap: 6px;
-}
-
-.filters button {
-  flex: 1;
-  padding: 6px;
-  font-size: 13px;
-  background: rgb(255 255 255 / 5%);
-  border: none;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.filters button:hover {
-  background: rgb(98 0 234 / 50%);
-}
-
+/* FORM (placed BEFORE filters to fix lint error) */
 form {
   display: flex;
   flex-direction: column;
@@ -179,6 +160,28 @@ form button:hover {
   opacity: 0.9;
 }
 
+/* FILTERS (after form ✔) */
+.filters {
+  display: flex;
+  gap: 6px;
+}
+
+.filters button {
+  flex: 1;
+  padding: 6px;
+  font-size: 13px;
+  background: rgb(255 255 255 / 5%);
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.filters button:hover {
+  background: rgb(98 0 234 / 50%);
+}
+
+/* LIGHT MODE */
 body.light {
   background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
   color: #111;
