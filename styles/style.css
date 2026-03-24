@@ -156,10 +156,6 @@ form button {
   cursor: pointer;
 }
 
-form button:hover {
-  opacity: 0.9;
-}
-
 /* FILTERS (after form ✔) */
 .filters {
   display: flex;
@@ -179,6 +175,10 @@ form button:hover {
 
 .filters button:hover {
   background: rgb(98 0 234 / 50%);
+}
+
+form button:hover {
+  opacity: 0.9;
 }
 
 /* LIGHT MODE */
