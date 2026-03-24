@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+  <button id="theme-toggle">🌙</button>
+
+  <h1>Expense Tracker</h1>
+
+  <h2>Your Balance</h2>
+  <h3 id="balance">$0.00</h3>
+
+  <div class="summary">
+    <div class="income">
+      <h4>Income</h4>
+      <p id="income">$0.00</p>
+    </div>
+    <div class="expense">
+      <h4>Expenses</h4>
+      <p id="expense">$0.00</p>
+    </div>
+  </div>
+
+  <canvas id="chart"></canvas>
+
+  <div class="filters">
+    <button onclick="filterTransactions('all')">All</button>
+    <button onclick="filterTransactions('income')">Income</button>
+    <button onclick="filterTransactions('expense')">Expenses</button>
+  </div>
+
+  <h3>History</h3>
+  <ul id="transaction-list"></ul>
+
+  <h3>Add Transaction</h3>
+  <form id="form">
+    <input type="text" id="text" placeholder="Description" required />
+    <input type="number" id="amount" placeholder="+ income, - expense" required />
+    <input type="date" id="date" required />
+    <button>Add Transaction</button>
+  </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
