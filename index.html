@@ -13,14 +13,14 @@
       <p class="subtitle">Add income and expenses, then follow your balance.</p>
       <p class="balance-label">Current Balance</p>
       <p class="balance-value" id="balance">$0.00</p>
-      <p class="balance-note" id="balanceNote">No transactions yet</p>
+      <p class="balance-note" id="balance-note">No transactions yet</p>
     </section>
 
     <section class="dashboard-grid">
       <article class="card">
         <h2>Add Transaction</h2>
 
-        <form id="transactionForm" class="transaction-form">
+        <form id="transaction-form" class="transaction-form">
           <label for="description">Description</label>
           <input id="description" name="description" type="text" placeholder="Salary or groceries" required>
 
@@ -30,7 +30,7 @@
           <button type="submit" class="primary-btn">Add Transaction</button>
         </form>
 
-        <p id="formMessage" class="form-message" aria-live="polite"></p>
+        <p id="form-message" class="form-message" aria-live="polite"></p>
       </article>
 
       <article class="card">
@@ -39,41 +39,41 @@
         <div class="totals-grid">
           <div class="metric income">
             <span>Total Income</span>
-            <strong id="incomeTotal">$0.00</strong>
+            <strong id="income-total">$0.00</strong>
           </div>
           <div class="metric expense">
             <span>Total Expenses</span>
-            <strong id="expenseTotal">$0.00</strong>
+            <strong id="expense-total">$0.00</strong>
           </div>
           <div class="metric balance">
             <span>Net Balance</span>
-            <strong id="netTotal">$0.00</strong>
+            <strong id="net-total">$0.00</strong>
           </div>
         </div>
 
         <div class="chart-card">
           <div class="chart-head">
             <h3>Income vs Expenses</h3>
-            <span id="chartCaption">Waiting for data</span>
+            <span id="chart-caption">Waiting for data</span>
           </div>
           <div class="bar-chart" aria-label="Income versus expenses chart">
             <div class="bar-row">
               <div class="bar-meta">
                 <span>Income</span>
-                <span id="incomeBarLabel">$0.00</span>
+                <span id="income-bar-label">$0.00</span>
               </div>
               <div class="bar-track">
-                <div id="incomeBar" class="bar-fill income-bar"></div>
+                <div id="income-bar" class="bar-fill income-bar"></div>
               </div>
             </div>
 
             <div class="bar-row">
               <div class="bar-meta">
                 <span>Expenses</span>
-                <span id="expenseBarLabel">$0.00</span>
+                <span id="expense-bar-label">$0.00</span>
               </div>
               <div class="bar-track">
-                <div id="expenseBar" class="bar-fill expense-bar"></div>
+                <div id="expense-bar" class="bar-fill expense-bar"></div>
               </div>
             </div>
           </div>
@@ -85,9 +85,9 @@
       <div class="history-top">
         <h2>Transaction History</h2>
 
-        <label class="filter-wrap" for="filterType">
+        <label class="filter-wrap" for="filter-type">
           <span>Filter</span>
-          <select id="filterType">
+          <select id="filter-type">
             <option value="all">All</option>
             <option value="income">Income only</option>
             <option value="expense">Expenses only</option>
@@ -95,8 +95,8 @@
         </label>
       </div>
 
-      <ul id="transactionList" class="transaction-list" aria-live="polite"></ul>
-      <template id="emptyStateTemplate">
+      <ul id="transaction-list" class="transaction-list" aria-live="polite"></ul>
+      <template id="empty-state-template">
         <li class="empty-state">
           <h3>No transactions yet</h3>
           <p>Add your first income or expense to see it here.</p>
