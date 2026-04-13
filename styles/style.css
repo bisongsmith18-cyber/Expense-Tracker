@@ -1,218 +1,291 @@
+:root {
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #dbe1ea;
+  --primary: #2563eb;
+  --income: #15803d;
+  --expense: #dc2626;
+}
+
 * {
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  transition: all 0.25s ease-in-out;
 }
 
 body {
-  background: linear-gradient(135deg, #0f0f0f, #1a1a2e);
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
 }
 
-.container {
-  width: 100%;
-  max-width: 380px;
-  padding: 20px;
-  border-radius: 18px;
-  background: rgb(255 255 255 / 5%);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgb(255 255 255 / 10%);
-  box-shadow: 0 10px 30px rgb(0 0 0 / 50%);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+button,
+input,
+select {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(900px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.summary-card,
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
 }
 
 h1 {
-  text-align: center;
-  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 h2 {
-  text-align: center;
+  margin-bottom: 1rem;
   font-size: 1.2rem;
 }
 
-h3 {
-  text-align: center;
-  font-size: 1rem;
+.subtitle,
+.balance-note,
+.chart-head span,
+.transaction-date,
+.empty-state p {
+  color: var(--muted);
 }
 
-#theme-toggle {
-  align-self: flex-end;
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  background: rgb(255 255 255 / 10%);
-  color: white;
+.balance-label {
+  margin-bottom: 0.35rem;
+  font-weight: 700;
 }
 
-.balance {
-  text-align: center;
+.balance-value {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
 }
 
-.summary {
-  display: flex;
-  gap: 8px;
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
 }
 
-.summary div {
-  flex: 1;
-  padding: 12px;
-  border-radius: 10px;
-  text-align: center;
-  background: rgb(255 255 255 / 5%);
-  backdrop-filter: blur(10px);
+.transaction-form {
+  display: grid;
+  gap: 0.75rem;
 }
 
-.income {
-  border: 1px solid rgb(0 255 100 / 40%);
-  box-shadow: 0 0 10px rgb(0 255 100 / 20%);
+.transaction-form label,
+.filter-wrap span {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 700;
 }
 
-.income:hover {
-  box-shadow: 0 0 20px rgb(0 255 100 / 60%);
-}
-
-.expense {
-  border: 1px solid rgb(255 0 80 / 40%);
-  box-shadow: 0 0 10px rgb(255 0 80 / 20%);
-}
-
-.expense:hover {
-  box-shadow: 0 0 20px rgb(255 0 80 / 60%);
-}
-
-canvas {
-  max-width: 100%;
-}
-
-ul {
-  list-style: none;
-}
-
-li {
-  background: rgb(255 255 255 / 5%);
-  padding: 10px;
-  margin: 5px 0;
+.transaction-form input,
+.filter-wrap select {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--border);
   border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  border-right: 4px solid;
+  background: #fff;
 }
 
-li.plus {
-  border-color: #4caf50;
-}
-
-li.minus {
-  border-color: #f44336;
-}
-
-li small {
-  font-size: 11px;
-  color: #aaa;
-}
-
-/* FORM (placed BEFORE filters to fix lint error) */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-form input {
-  padding: 10px;
-  border-radius: 6px;
+.primary-btn,
+.delete-btn {
   border: none;
-  background: rgb(255 255 255 / 5%);
-  color: white;
-}
-
-form button {
-  padding: 10px;
-  border-radius: 6px;
-  background: linear-gradient(90deg, #6200ea, #9c27b0);
-  border: none;
-  color: white;
+  border-radius: 8px;
   cursor: pointer;
 }
 
-/* FILTERS (after form ✔) */
-.filters {
+.primary-btn {
+  padding: 0.85rem 1rem;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+}
+
+.form-message {
+  min-height: 1.25rem;
+  margin: 0.75rem 0 0;
+  color: var(--income);
+}
+
+.form-message.error {
+  color: var(--expense);
+}
+
+.totals-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.metric {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.9rem;
+  background: #fafbfc;
+}
+
+.metric span {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--muted);
+}
+
+.metric strong {
+  font-size: 1.15rem;
+}
+
+.metric.income strong {
+  color: var(--income);
+}
+
+.metric.expense strong {
+  color: var(--expense);
+}
+
+.chart-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.chart-head,
+.bar-meta,
+.transaction-main,
+.history-top {
   display: flex;
-  gap: 6px;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
-.filters button {
-  flex: 1;
-  padding: 6px;
-  font-size: 13px;
-  background: rgb(255 255 255 / 5%);
-  border: none;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
+.chart-head,
+.history-top {
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
-form button:hover {
-  opacity: 0.9;
+.bar-chart {
+  display: grid;
+  gap: 1rem;
 }
 
-.filters button:hover {
-  background: rgb(98 0 234 / 50%);
+.bar-track {
+  height: 12px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  overflow: hidden;
 }
 
-button.delete-btn {
-  align-self: flex-end;
-  background: rgb(255 0 80 / 20%);
-  border: none;
-  color: white;
-  padding: 3px 6px;
-  border-radius: 4px;
-  cursor: pointer;
+.bar-fill {
+  height: 100%;
+  width: 0;
 }
 
-/* LIGHT MODE */
-body.light {
-  background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
-  color: #111;
+.income-bar {
+  background: var(--income);
 }
 
-body.light .container {
-  background: rgb(255 255 255 / 60%);
-  color: #111;
+.expense-bar {
+  background: var(--expense);
 }
 
-body.light input {
-  background: rgb(0 0 0 / 5%);
-  color: #111;
+.filter-wrap {
+  min-width: 170px;
 }
 
-body.light .filters button {
-  background: rgb(0 0 0 / 5%);
-  color: #111;
+.transaction-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
 }
 
-body.light li {
-  background: rgb(0 0 0 / 5%);
+.transaction-item,
+.empty-state {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  background: #fff;
 }
 
-body.light #theme-toggle {
-  background: rgb(0 0 0 / 10%);
-  color: black;
+.transaction-item {
+  display: grid;
+  gap: 0.75rem;
 }
 
-@media (max-width: 480px) {
-  .summary {
+.transaction-item.income {
+  border-left: 4px solid var(--income);
+}
+
+.transaction-item.expense {
+  border-left: 4px solid var(--expense);
+}
+
+.transaction-title,
+.transaction-amount {
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+}
+
+.transaction-amount-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.transaction-item.income .transaction-amount,
+.transaction-item.income .transaction-sign {
+  color: var(--income);
+}
+
+.transaction-item.expense .transaction-amount,
+.transaction-item.expense .transaction-sign {
+  color: var(--expense);
+}
+
+.delete-btn {
+  padding: 0.65rem 0.9rem;
+  background: #111827;
+  color: #fff;
+}
+
+.empty-state {
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .dashboard-grid,
+  .totals-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-head,
+  .bar-meta,
+  .transaction-main,
+  .history-top {
     flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filter-wrap,
+  .delete-btn {
+    width: 100%;
   }
 }
